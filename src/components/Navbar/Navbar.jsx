@@ -41,8 +41,8 @@ const Navbar = () => {
             src={assets.profile_icon}
             alt=""
           />
-          <div className="group-hover:block hidden absolute right-0 top-full dropdown-menu  z-10">
-            <div className="flex flex-col gap-2 w-36 py-3 px-5 text-center"></div>
+          <div className="bg-lime-200 group-hover:block hidden absolute right-0 top-full dropdown-menu  z-10  rounded-lg">
+            <div className=" flex flex-col gap-2 w-36 py-3 px-5 text-center"></div>
             <p className="cursor-pointer text-green-900 hover:text-green-500 text-center">
               My Profile
             </p>
