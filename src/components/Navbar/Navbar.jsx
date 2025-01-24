@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { assets } from "../../assets/assets";
 import { Link, NavLink } from "react-router-dom";
+import { ShopContext } from "../../context/ShopContext";
 
 const Navbar = () => {
   // for menu -bar in small screen
   const [visible, setVisible] = useState(false);
+  const { setShowSearch, getCartCount } = useContext(ShopContext);
 
   return (
     <div className="flex item-center justify-between py-5 font-medium ">
-      <Link to='/'>
-      <img src={assets.logo} className="w-36"></img>
+      <Link to="/">
+        <img src={assets.logo} className="w-36"></img>
       </Link>
 
       <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
@@ -35,14 +37,22 @@ const Navbar = () => {
       </ul>
 
       <div className="flex items-center gap-6 mb-4">
-        <img src={assets.search_icon} className="w-5 cursor-pointer"></img>
+        <img
+          onClick={() => setShowSearch(true)}
+          src={assets.search_icon}
+          className="w-5 cursor-pointer"
+        ></img>
 
         <div className="group relative  ">
-          <img
-            className="w-5 cursor-pointer"
-            src={assets.profile_icon}
-            alt=""
-          />
+          <Link to={"/login"}>
+            {" "}
+            <img
+              className="w-5 cursor-pointer"
+              src={assets.profile_icon}
+              alt=""
+            />
+          </Link>
+
           <div className="bg-lime-200 group-hover:block hidden absolute right-0 top-full dropdown-menu  z-10  rounded-lg">
             <div className=" flex flex-col gap-2 w-36 py-3 px-5 text-center"></div>
             <p className="cursor-pointer text-green-900 hover:text-green-500 text-center">
@@ -59,7 +69,7 @@ const Navbar = () => {
         <Link to="/cart" className="relative ">
           <img src={assets.cart_icon} className="w-5  min-w-5"></img>
           <p className="absolute right-[-5px] bottom-[-5px] w-5 text-center leading-4 bg-green-900 text-white aspect-square rounded-full text-[-5px] ">
-            70
+            {getCartCount()}
           </p>
         </Link>
         <img

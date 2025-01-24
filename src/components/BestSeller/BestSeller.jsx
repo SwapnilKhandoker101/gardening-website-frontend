@@ -9,14 +9,14 @@ const BestSeller = () => {
   const [bestSellers, setBestSellers] = useState([]);
 
   useEffect(() => {
-    const bestProduct = products.filter((item) => item.bestseller);
+    const bestProduct = products.filter((item) => item.bestsellers);
     setBestSellers(bestProduct.slice(0, 5));
-  }, []);
+  }, [products]);
 
   return (
     <div className="my-10">
       <div className="text-center text-3xl py-8">
-        <Title text1={"BEST"} text2={"Sellers"}></Title>
+        <Title text1={"BEST"} text2={"SELLERS"}></Title>
         <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-green-700">
           Below are the best selling products from our website
         </p>

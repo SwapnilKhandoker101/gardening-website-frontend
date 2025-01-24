@@ -9,7 +9,11 @@ const LatestCollection = () => {
 
   useEffect(() => {
     setLatestProducts(products.slice(0, 10));
-  }, []);
+  }, [products]);
+
+  if (!products || products.length === 0) {
+    return <p>Loading latest products...</p>;
+  }
 
   return (
     <div className="my-10">
@@ -27,7 +31,7 @@ const LatestCollection = () => {
         {latestProducts.map((item, index) => (
           <ProductItem
             key={index}
-            id={item._id}
+            id={item.id}
             image={item.image}
             name={item.name}
             price={item.price}
